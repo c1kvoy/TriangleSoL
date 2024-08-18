@@ -9,10 +9,6 @@ struct Point { // çтруктура точки, для дальнейшего �
     // перегрузил операторы сравнения, написал методы вычисления длины вектора, вектора по точкам, векторного умножения
     double x, y, z;
 
-    friend ostream& operator<<(ostream& os, const Point& p) {
-        return os << "(" << p.x << ", " << p.y << ", " << p.z << ")";
-    }
-
     Point(): x(0), y(0), z(0) {}
 
     Point(double x, double y, double z): x(x), y(y), z(z) {}
@@ -112,17 +108,10 @@ struct Triangle { // треугольник
                 nulls.push_back(points[i]);
             }
         }
-
         return make_tuple(minus, plus, nulls);
     }
-
 };
 
-void print_points(const vector<Point>& points) {
-    for (const auto& point : points) {
-        cout << point << endl;
-    }
-}
 
 int main() {
     Point t1, t2, t3;
@@ -133,7 +122,6 @@ int main() {
     cin >> t3.x >> t3.y >> t3.z;
 
     Triangle triangle1(t1, t2, t3);
-//    cout << "Area: " << triangle1.triangle_area() << endl; добавил чтоб проверять правильность программы
 
     cin >> p1.x >> p1.y >> p1.z;
     cin >> p2.x >> p2.y >> p2.z;
@@ -145,7 +133,6 @@ int main() {
     vector<Point> minus = get<0>(result);
     vector<Point> plus = get<1>(result);
     vector<Point> nulls = get<2>(result);
-
 
     vector<Point> intersection_points;
     vector<double> areas;
